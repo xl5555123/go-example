@@ -20,6 +20,28 @@ func (c *UserController) GetAll() {
 	c.ServeJSON()
 }
 
+/**
+ *
+ * @api {get} /users/:id 根据id请求用户信息
+ * @apiName getUser
+ * @apiGroup 用户
+ *
+ * @apiParam {Number} id Users unique ID.
+ *
+ * @apiSuccess {Number} id   Users unique ID.
+ * @apiSuccess {String} name   User name.
+ *
+ * @apiSuccessExample Success-Response:
+ *  HTTP/1.1 200 OK
+ *  {
+ *      "id": 1,
+ *      "name": "johny"
+ *  }
+ *
+ * @apiUse UserNotFoundError
+ *
+ * @apiVersion 0.0.1
+ */
 // @router /users/:id [get]
 func (c *UserController) Get() {
 	userId, err := strconv.Atoi(c.Ctx.Input.Param(":id"))
