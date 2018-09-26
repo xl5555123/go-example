@@ -38,7 +38,6 @@ func (c *UserController) GetAll() {
  *      "name": "johny"
  *  }
  *
- * @apiUse UserNotFoundError
  *
  * @apiVersion 0.0.1
  */
