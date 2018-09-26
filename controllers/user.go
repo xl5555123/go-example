@@ -22,7 +22,7 @@ func (c *UserController) GetAll() {
 
 /**
  *
- * @api {get} /users/:id 根据id请求用户信息
+ * @api {get} /usersV2/:id 根据id请求用户信息
  * @apiName getUser
  * @apiGroup 用户
  *
@@ -43,8 +43,38 @@ func (c *UserController) GetAll() {
  *
  * @apiVersion 0.0.2
  */
+// @router /usersV2/:id [get]
+func (c *UserController) GetV2() {
+	userId, err := strconv.Atoi(c.Ctx.Input.Param(":id"))
+	fmt.Println(err)
+	user := models.GetUser(userId)
+	c.Data["json"] = user
+	c.ServeJSON()
+}
+
+/**
+ *
+ * @api {get} /users/:id 根据id请求用户信息
+ * @apiName getUser
+ * @apiGroup 用户
+ *
+ * @apiParam {Number} id Users unique ID.
+ *
+ * @apiSuccess {Number} id   Users unique ID.
+ * @apiSuccess {String} name   User name
+ *
+ * @apiSuccessExample Success-Response:
+ *  HTTP/1.1 200 OK
+ *  {
+ *      "id": 1,
+ *      "name": "johny"
+ *  }
+ *
+ *
+ * @apiVersion 0.0.1
+ */
 // @router /users/:id [get]
-func (c *UserController) Get() {
+func (c *UserController) GetV1() {
 	userId, err := strconv.Atoi(c.Ctx.Input.Param(":id"))
 	fmt.Println(err)
 	user := models.GetUser(userId)
