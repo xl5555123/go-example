@@ -30,16 +30,18 @@ func (c *UserController) GetAll() {
  *
  * @apiSuccess {Number} id   Users unique ID.
  * @apiSuccess {String} name   User name.
+ * @apiSuccess {Number} age   User age.
  *
  * @apiSuccessExample Success-Response:
  *  HTTP/1.1 200 OK
  *  {
  *      "id": 1,
- *      "name": "johny"
+ *      "name": "johny",
+ *		"age": 24
  *  }
  *
  *
- * @apiVersion 0.0.1
+ * @apiVersion 0.0.2
  */
 // @router /users/:id [get]
 func (c *UserController) Get() {
